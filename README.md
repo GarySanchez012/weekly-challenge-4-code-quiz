@@ -23,4 +23,5 @@ GIVEN I am taking a code quiz
 
 ## Website
 https://garysanchez012.github.io/weekly-challenge-4-code-quiz/
-# weekly-challenge-4-code-quiz
+
+**(Using starter code Professor Loy gave to the class)**
