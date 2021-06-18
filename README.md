@@ -1,4 +1,4 @@
-# weekly-challenge-4-code-quiz 1
+# weekly-challenge-4-code-quiz
 
 ## User Story
 ---
