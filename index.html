@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>True or False Game</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+  <div id="header">
+    <div class="highscores">
+      <a href="./highscore.html">View highscore</a>
+    </div>
+  
+   <div>Time Remaining: <span id="timeLeftSpan"></span></div>
+  </div>
+  
+  
+
+  <div id="intro">
+    <h1>Quiz game</h1>
+    Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!
+    <button id="startBtn">start</button>
+  </div>
+
+  <div id="questions" class="hide">
+    <h1 id="title"></h1>
+     <ul>
+       <li>
+         <button id="choice1"></button>
+         <button id="choice2"></button>
+         <button id="choice3"></button>
+         <button id="choice4"></button>
+       </li>
+     </ul>
+  </div>
+
+
+ <div id="initialDiv" class="hide"> 
+   <input type="text" id="initial">
+   <button id="submit">Submit</button>
+ </div>
+
+
+  <script src="./assets/js/script.js"></script>
+
+
+
+</body>
+
+</html>
