@@ -1,3 +1,24 @@
+#intro h1 {
+    text-align: center;
+}
+
+#intro p {
+  margin: auto 25%;
+  text-align: center;
+}
+
+#btnDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#startBtn {
+    background: purple;
+    color: white;
+    border-radius: 10%;
+}
+
 .hide {
     display: none;
   }
