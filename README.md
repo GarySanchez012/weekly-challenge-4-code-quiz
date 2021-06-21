@@ -25,5 +25,7 @@ GIVEN I am taking a code quiz
 https://garysanchez012.github.io/weekly-challenge-4-code-quiz/
 
 **(Using starter code Professor Loy gave to the class)**
+---
 **(worked on it with Camil, Richard, Akeem)**
+---
 
