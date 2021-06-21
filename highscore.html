@@ -4,29 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/styleHighScore.css">
+    <title>High Score</title>
 </head>
 <body>
-    
-    <div class="highscores">
-        All Scores
-        <button id="goBackBtn" onclick="location.href='./quizgame.html'">
-            Go Back
-          </button>
+    <main id="stats-player" class="hide">
+        <div id="score-text">
+            <h2>High Score</h2>
+            <p id="score-display"></p>
+        </div>
+        <div id="btn-control">
+            <button id="back-btn"><a href="./index.html">Go Back</a></button>
+            <button id="delete-score">Clear High Score</button>
+        </div>
+    </main>
 
-          <button id="clearHighscoreBtn">
-           clear highscore history
-          </button>
-    </div>
-
-    <script>
-        var clearHighscoreBtn=document.querySelector("#clearHighscoreBtn")
-
-        clearHighscoreBtn.addEventListener("click", function(){
-            localStorage.clear()
-        })
-
-
-    </script>
+    <script src="./assets/js/scriptHighScore.js"></script>
 </body>
 </html>

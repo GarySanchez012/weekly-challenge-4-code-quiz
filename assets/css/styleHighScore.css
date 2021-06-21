@@ -1,0 +1,34 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+#stats-player {
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+padding: 15px;
+text-align: center;
+}
+#score-text h2{
+    font-size: 45px;
+    color:red;
+
+}
+#score-display{
+    font-size: 25px;
+    background-color: rgb(177, 173, 173);
+    padding: 5px;
+    border-radius: 5px;
+}
+#back-btn, #delete-score {
+    margin: 15px 10px 0px 0px;
+    font-weight: 600;
+    font-size: 25px;
+    background-color: rgb(102, 102, 133);
+    border-radius: 15px;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+}
+#back-btn a{
+    color: white;
+    text-decoration: none;
+}

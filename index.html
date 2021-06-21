@@ -10,46 +10,58 @@
 </head>
 
 <body>
-  <div id="header">
-    <div class="highscores">
-      <a href="./highscore.html">View highscore</a>
+  <header>
+    <a href="./highscore.html" id="linkscore">View High Score</a>
+    <div id="time-container" class="timer">
+      <p id="countdown">Timer:</p>
     </div>
-  
-   <div>Time Remaining: <span id="timeLeftSpan"></span></div>
-  </div>
-  
-  
+  </header>
 
-  <div id="intro">
-    <h1>Quiz game</h1>
-    <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-    <div id="btnDiv"><button id="startBtn">Start Quiz</button></div>
-    
-  </div>
+  <main id="main">
+    <div id="intro">
+      <h1>JavaScript Coding Challenge Quiz</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore cupiditate dolore nulla debitis hic corrupti et vero aliquam vitae a?</p>
+      <button id="start-button">Start Game</button>
+    </div>
+    <hr>
 
-  <div id="questions" class="hide">
-    <h1 id="title"></h1>
-     <ul>
-       <li>
-         <button id="choice1"></button>
-         <button id="choice2"></button>
-         <button id="choice3"></button>
-         <button id="choice4"></button>
-       </li>
-     </ul>
-  </div>
+      <div id="question-container" class="hide">
+        <div id="question"> Question </div>
+          <div id="answer-button" class="button-set">
+            <button id="btn" class="btn-btn">Answer 1</button>
+            <button id="btn" class="btn-btn">Answer 2</button>
+            <button id="btn" class="btn-btn">Answer 3</button>
+            <button id="btn" class="btn-btn">Answer 4</button>
+          </div>
+          <hr>
+          <div id="pop-up" class="hide">
+            <h2>Correct!</h2>
+          </div>
+          <hr>
+      </div>
+
+      <div id="end-game" class="hide">
+        <h2>End Of Game!</h2>
+        <h3 id="final-score-info">This is your score</h3>
+        <form>
+          <label for="name">Enter Name:</label>
+          <input type="text"
+          id="player-name"
+          placeholder="Enter Name Here">
+          <button id="submit-button" class="submit">Submit</button>
+          <button id="restart-button" class="restart"><a href="index.html">Restart</a></button>
+        </form>
+      </div>
+
+  </main>
 
 
- <div id="initialDiv" class="hide"> 
-   <input type="text" id="initial">
-   <button id="submit">Submit</button>
- </div>
+
+
+
 
 
   <script src="./assets/js/script.js"></script>
-
-
-
 </body>
 
 </html>
