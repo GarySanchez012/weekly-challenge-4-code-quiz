@@ -1,78 +1,151 @@
-var startBtn = document.querySelector("#startBtn")
-var questionsDiv = document.querySelector("#questions")
-var introDiv = document.querySelector("#intro")
-var timeLeftSpan= document.querySelector("#timeLeftSpan")
-var initialDiv= document.querySelector("#initialDiv")
-var title= document.querySelector("#title")
-var choice1= document.querySelector("#choice1")
-var choice2= document.querySelector("#choice2")
-var choice3= document.querySelector("#choice3")
-var choice4= document.querySelector("#choice4")
+var startGameBtn = document.getElementById("start-button");
+var introcontainer = document.getElementById("intro");
+var questionContainer = document.getElementById("question-container");
+var currentIndex = 0;
+var questionDisplay = document.getElementById("question");
+var answerButtonEl = document.getElementById("answer-button");
+var popup = document.getElementById("pop-up");
+var timerEl = document.getElementById("countdown");
+var gameEndEl = document.getElementById("end-game");
+var finalScore = document.getElementById("final-score-info");
+var submitBtnEl = document.getElementById("submit-button");
+var nameOfPlayerEl = document.getElementById("player-name");
+
 var questions = [
-  { 
-    q: 'what is color of the sky.', 
-    c: ['green','blue','orange','black'],
-    a: 1 
-  
-  },
-  { 
-    q: 'what is color of water.', 
-    c: ['green','orange','black','blue'],
-    a: 3 
-  
-  }
-  
-];
-var timeRemaining =  questions.length *15 
-
-var questionIndex=0
-
-var pidClock
-
-startBtn.addEventListener("click", function () {
-  questionsDiv.classList.remove("hide")
-  introDiv.classList.add("hide")
-  loadQuestion()
-  pidClock=setInterval(countDown, 1000)
-   
-})
-function loadQuestion(){
-    
-   title.textContent=questions[questionIndex].q
-   choice1.textContent=questions[questionIndex].c[0]
-   choice2.textContent=questions[questionIndex].c[1]
-   choice3.textContent=questions[questionIndex].c[2]
-   choice4.textContent=questions[questionIndex].c[3]
-
-
-}
-
-choice1.addEventListener("click", function(){
-questionIndex++
-loadQuestion()
-})
-choice2.addEventListener("click", function(){
-questionIndex++
-loadQuestion()
-})
-choice3.addEventListener("click", function(){
-  questionIndex++
-  loadQuestion()
-})
-choice4.addEventListener("click", function(){
-  questionIndex++
-  loadQuestion()
-})
-function countDown(){
-  if(timeRemaining===0)
   {
-    clearInterval(pidClock)  
-    questionsDiv.classList.add("hide")  //adding the hide class to make it invisible
-    initialDiv.classList.remove("hide") // removing the hide class to make it visible
+    question: "Which of these are tags?",
+    answers: [
+      { text: "Element", correct: false },
+      { text: "Class", correct: false },
+      { text: "Id", correct: false },
+      { text: "All of the above", correct: true },
+    ],
+  },
+  {
+    question: "Where is the script tagged placed in an HTML document?",
+    answers: [
+      { text: "Inside the head tag?", correct: false },
+      { text: "At the top of the page?", correct: false },
+      { text: "At the bottom of the body tag?", correct: true },
+      { text: "In the recycle bin?", correct: false },
+    ],
+  },
+  {
+    question: "What is the most popular programming language in the world?",
+    answers: [
+      { text: "JavaScript?", correct: true },
+      { text: "HTML", correct: false },
+      { text: "Python", correct: false },
+      { text: "JQuery", correct: false },
+    ],
+  },
+  {
+    question: "What is the element called that can continue to execute a block of code as long as the specified condition remains TRUE?",
+    answers: [
+      { text: "Repeater", correct: false },
+      { text: "Loop", correct: true },
+      { text: "Clone", correct: false },
+      { text: "Debugger", correct: false },
+    ],
+  },
+  {
+    question: "What is a JavaScript element that represents either TRUE or FALSE values?",
+    answers: [
+      { text: "String", correct: false },
+      { text: "Number", correct: false },
+      { text: "Event", correct: false },
+      { text: "Boolean", correct: true },
+    ],
+  },
+];
 
+var startGame = function () {
+  console.log("this function works");
+  introcontainer.classList.add("hide");
+  questionContainer.classList.remove("hide");
+  questionDisplay.textContent = questions[currentIndex].question;
+  createAnswer();
+  countDown();
+};
+
+var createAnswer = function () {
+  answerButtonEl.innerHTML = "";
+  for (var i = 0; i < questions[currentIndex].answers.length; i++) {
+    thisButton = document.createElement("button");
+    thisButton.classList.add("btn-btn");
+    thisButton.textContent = questions[currentIndex].answers[i].text;
+    if (questions[currentIndex].answers[i].correct) {
+      thisButton.setAttribute("id", "true");
+    }
+    answerButtonEl.append(thisButton);
+    thisButton.addEventListener("click", nextQuestion);
   }
-  timeLeftSpan.textContent  = timeRemaining
-  timeRemaining--  // timeRemaining = timeRemaining-1
+};
 
+var nextQuestion = function () {
+  console.log("this works");
+  if (this.getAttribute("id") === "true") {
+    popup.classList.remove("hide");
+    popup.textContent = "Correct!";
+  } else {
+    popup.classList.remove("hide");
+    popup.textContent = "Incorrect!";
+    timeLeft = timeLeft - 15;
+  }
+  currentIndex++;
+  if (currentIndex < questions.length) {
+    questionDisplay.textContent = questions[currentIndex].question;
+    createAnswer();
+  } else {
+    gameEnd();
+  }
+};
 
-}
+var timeLeft = questions.length * 15;
+var timeInterval;
+
+var countDown = function () {
+  timeInterval = setInterval(function () {
+    if (timeLeft > 1) {
+      timerEl.textContent = "Timer: " + timeLeft;
+      timeLeft--;
+    } else if (timeLeft === 1) {
+      timerEl.textContent = "Timer: " + timeLeft;
+      timeLeft--;
+    } else {
+      timerEl.textContent = "Timer: 0";
+      alert("Time is up!");
+      clearInterval(timeInterval);
+      gameEnd();
+    }
+  }, 1000);
+};
+
+var gameEnd = function () {
+  console.log("This is the end of the game!");
+  score = timeLeft;
+  clearInterval(timeInterval);
+  questionContainer.classList.add("hide");
+  gameEndEl.classList.remove("hide");
+  finalScore.innerHTML = "Your score is " + score;
+};
+
+var saveScore = function (event) {
+  console.log("submit btn works");
+  event.preventDefault();
+  totalScore = JSON.parse(localStorage.getItem("totalScore")) || [];
+  var playerName = document.getElementById("player-name").value;
+  var newScore = {
+    playerName: playerName,
+    score: score,
+  };
+  if (playerName === "") {
+    alert("Name cannot be blank!");
+  } else {
+    totalScore.push(newScore);
+    localStorage.setItem("totalScore", JSON.stringify(totalScore));
+  }
+};
+
+startGameBtn.addEventListener("click", startGame);
+submitBtnEl.addEventListener("click", saveScore);
